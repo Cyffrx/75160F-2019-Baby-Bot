@@ -1,1 +1,0 @@
-void lift(int power);

@@ -18,12 +18,17 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-  pros::Motor front_left (FRONT_LEFT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-	pros::Motor front_right (FRONT_RIGHT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-	pros::Motor back_left (BACK_LEFT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-	pros::Motor back_right (BACK_RIGHT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-
+  pros::Motor front_left (FRONT_LEFT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::Motor back_left (BACK_LEFT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::Motor front_right (FRONT_RIGHT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::Motor back_right (BACK_RIGHT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+  
 	pros::Motor lift_motor (LIFT_MOTOR, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
+
+  pros::Motor arm_motor (ARM, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+
+  pros::Motor left_intake (LEFT_INTAKE, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::Motor right_intake (RIGHT_INTAKE, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
   pros::Vision vision_sensor (VISION_PORT, pros::E_VISION_ZERO_CENTER);
 }
