@@ -6,7 +6,7 @@ void intake(int power) {
   pros::Motor left_intake(LEFT_INTAKE);
   pros::Motor right_intake(RIGHT_INTAKE);
 
-  left_intake.move(-power);
-  right_intake.move(power);
+  left_intake.move_voltage(power);
+  right_intake.move_voltage(power);
 
 }

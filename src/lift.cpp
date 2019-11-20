@@ -11,6 +11,6 @@ void lift(int power) {
       lift.set_brake_mode(MOTOR_BRAKE_HOLD);
     } else {
       //lift.move(power);
-      lift.move_voltage(120*power);
+      lift.move(power);
     }
 }

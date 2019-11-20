@@ -1,26 +1,51 @@
 #include "main.h"
 #include "send_includes/smart_ports.h"
-
-#define SIG_ORANGE 1
-#define SIG_GREEN 2
-#define SIG_PURPLE 3
-
-void vision(int target) {
+/*
+class vision {
+private:
   pros::Vision camera (VISION_PORT);
 
-  pros::vision_object_s_t vision_target;
+  enum vTargets = {
+    ORANGE, GREEN, PURPLE, NULL
+  };
 
-  if (target == 1) {
+  vTargets target = NULL;
 
-  } else if (target == 2) {
-
-  } else if (target == 2) {
-
-  } else {
+  void drt_angular_assist() {
 
   }
 
-  pros::vision_object_s_t sig_orange = camera.get_by_sig(0, SIG_ORANGE);
-  pros::vision_object_s_t sig_green = camera.get_by_sig(0, SIG_GREEN);
-  pros::vision_object_s_t sig_purple = camera.get_by_sig(0, SIG_PURPLE);
+  void drt_distance_assist() {
+
+  }
+
+public:
+
+  vision() {
+    target = ORANGE;
+  }
+
+  void drivetrain_assist() {
+    drt_angular_assist();
+    drt_distance_assist();
+  }
+
+  void change_target() {
+    switch (target) {
+      case ORANGE:
+        target = GREEN;
+      break;
+      case GREEN:
+        target = PURPLE;
+      break;
+      case PURPLE:
+        target = NULL;
+      break;
+      case NULL:
+        target = ORANGE;
+      break;
+    }
+  }
+
 }
+*/

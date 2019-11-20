@@ -1,13 +1,13 @@
 #include "main.h"
-#include "send_includes/smart_ports"
-
+#include "send_includes/smart_ports.h"
+/*
 class vision {
 private:
   pros::Vision camera (VISION_PORT);
 
   enum vTargets = {
     ORANGE, GREEN, PURPLE, NULL
-  }
+  };
 
   vTargets target = NULL;
 
@@ -48,3 +48,4 @@ public:
   }
 
 }
+*/

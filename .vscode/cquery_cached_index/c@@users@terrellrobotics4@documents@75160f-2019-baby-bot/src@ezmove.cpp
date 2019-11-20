@@ -18,43 +18,49 @@ public:
   ezMove() {
 
   }
-  void y_move(int power, int distance) {
-    distance *= DEGREE_TRAVEL;
-    front_left.set_zero_position(front_left.get_position());
+  void move(int power, int time) {
+    front_left.move(power);
+    front_right.move(power);
+    back_left.move(power);
+    back_right.move(power);
 
-    while (front_left.get_position() != distance) {
-      front_left.move(power);
-      front_right.move(power);
-      back_left.move(power);
-      back_right.move(power);
-    }
+    pros::delay( time);
 
-  }
-
-  void x_move(int power, int distance) {
-    distance *= DEGREE_TRAVEL;
-    front_left.set_zero_position(front_left.get_position());
-
-    while (front_left.get_position() != distance) {
-
-      front_left.move(power);
-      front_right.move(-power);
-      back_left.move(-power);
-      back_right.move(power);
-    }
+    front_left.move(0);
+    front_right.move(0);
+    back_left.move(0);
+    back_right.move(0);
 
   }
 
-  void rotate(int power, int rotation_distance) {
-    rotation_distance *= DEGREE_TRAVEL;
-    front_left.set_zero_position(front_left.get_position());
+  void strafe(int power, int time) {
+    front_left.move(power);
+    front_right.move(power);
+    back_left.move(-power);
+    back_right.move(-power);
 
-    while(front_left.get_position() != rotation_distance) {
-      front_left.move(power);
-      front_right.move(-power);
-      back_left.move(power);
-      back_right.move(-power);
-    }
+    pros::delay( time);
+
+    front_left.move(0);
+    front_right.move(0);
+    back_left.move(0);
+    back_right.move(0);
+
+  }
+
+  void rotate(int power, int time) {
+
+    front_left.move(power);
+    front_right.move(-power);
+    back_left.move(power);
+    back_right.move(-power);
+
+    pros::delay( time);
+
+    front_left.move(0);
+    front_right.move(0);
+    back_left.move(0);
+    back_right.move(0);
 
   }
 };
