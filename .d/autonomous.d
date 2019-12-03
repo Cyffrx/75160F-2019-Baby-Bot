@@ -67,7 +67,8 @@ bin/autonomous.cpp.o: src/autonomous.cpp include/main.h include/api.h \
  include/pros/misc.h include/pros/motors.hpp include/pros/motors.h \
  include/pros/rtos.hpp include/pros/rtos.h include/pros/vision.hpp \
  include/pros/vision.h include/send_includes/base_functions.h \
- include/send_includes/smart_ports.h
+ include/send_includes/smart_ports.h \
+ include/send_includes/auto_von_maus.h
 
 include/main.h:
 
@@ -324,3 +325,5 @@ include/pros/vision.h:
 include/send_includes/base_functions.h:
 
 include/send_includes/smart_ports.h:
+
+include/send_includes/auto_von_maus.h:

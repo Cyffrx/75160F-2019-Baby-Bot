@@ -1,4 +1,4 @@
-#include "main.h"
+  #include "main.h"
 #include "send_includes/smart_ports.h"
 #include "send_includes/base_functions.h"
 
@@ -20,13 +20,14 @@ void op_lift(pros::Controller driver) {
 void op_intake(pros::Controller driver) {
   // CONSIDER SWITCHING TO TOGGLE intake
   const int PWR = 12000;
+  const int IDLE = 1200;
 
   if (driver.get_digital(DIGITAL_L1)) {
     intake(PWR);
   } else if (driver.get_digital(DIGITAL_L2)) {
     intake(-PWR);
   } else  {
-    intake(0);
+    intake(IDLE);
   }
 
 }
