@@ -1,102 +1,76 @@
-#include "main.h"
-#include "send_includes/smart_ports.h"
+#include "send_includes/auto_von_maus.h"
 
-#define ARM_SPEED 12000
-#define LIFT_SPEED 12000
-#define INTAKE_SPEED 12000
+#define ARM_SPEED 12000 // in volts
+#define LIFT_SPEED 12000 // in volts
+#define INTAKE_SPEED 12000 // in volts
 
-#define DRIVE_SPEED 10000
-#define ROTATE_SPEED 10000
-
-class auto_von_maus {
-private:
-  pros::Motor front_left {FRONT_LEFT};
-  pros::Motor front_right {FRONT_RIGHT};
-  pros::Motor back_left {BACK_LEFT};
-  pros::Motor back_right {BACK_RIGHT};
-
-  pros::Motor arm {ARM};
-  pros::Motor left_intake {LEFT_INTAKE};
-  pros::Motor right_intake {RIGHT_INTAKE};
-  pros::Motor lift {LIFT_MOTOR};
+#define DRIVE_SPEED 10000 // in volts
+#define ROTATE_SPEED 10000 // in volts
 
 
-public:
-  auto_von_maus() {
-    lift.set_brake_mode(MOTOR_BRAKE_HOLD);
-    arm.set_brake_mode(MOTOR_BRAKE_HOLD);
-  }
+auto_von_maus::auto_von_maus() {
+  lift.set_brake_mode(MOTOR_BRAKE_HOLD);
+  arm.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-  //////////////////////////
-  // DRIVE WITH ROTATIONS //
-  //////////////////////////
+  lift.move_voltage(0);
+  arm.move_voltage(0);
+}
 
-  void drive (int distance) {
+void auto_von_maus::drive (int distance) {
 
-  }
-  void drive (int power, int distance) {
+}
+void auto_von_maus::drive (int power, int distance) {
 
-  }
-  void drive_t (int time) {
-    front_left.move_voltage(DRIVE_SPEED);
-    front_right.move_voltage(DRIVE_SPEED);
-    back_left.move_voltage(DRIVE_SPEED);
-    back_right.move_voltage(DRIVE_SPEED);
+}
 
-    pros::delay(time);
+/////////////////////
+// DRIVE WTIH TIME //
+/////////////////////
 
-    front_left.move_voltage(0);
-    front_right.move_voltage(0);
-    back_left.move_voltage(0);
-    back_right.move_voltage(0);
-  }
+void auto_von_maus::drive_t (int power, int time) {
+  front_left.move_voltage(power);
+  front_right.move_voltage(power);
+  back_left.move_voltage(power);
+  back_right.move_voltage(power);
 
-  /////////////////////
-  // DRIVE WTIH TIME //
-  /////////////////////
+  pros::delay(time);
 
-  void drive_t (int power, int time) {
-    front_left.move_voltage(power);
-    front_right.move_voltage(power);
-    back_left.move_voltage(power);
-    back_right.move_voltage(power);
+  front_left.move_voltage(0);
+  front_right.move_voltage(0);
+  back_left.move_voltage(0);
+  back_right.move_voltage(0);
 
-    pros::delay(time);
+}
 
-    front_left.move_voltage(0);
-    front_right.move_voltage(0);
-    back_left.move_voltage(0);
-    back_right.move_voltage(0);
+void auto_von_maus::drive_t (int time) {
+  front_left.move_voltage(DRIVE_SPEED);
+  front_right.move_voltage(DRIVE_SPEED);
+  back_left.move_voltage(DRIVE_SPEED);
+  back_right.move_voltage(DRIVE_SPEED);
 
-  }
+  pros::delay(time);
 
-  //////////////////////////
-  // STRAFE WITH ROTATONS //
-  //////////////////////////
+  front_left.move_voltage(0);
+  front_right.move_voltage(0);
+  back_left.move_voltage(0);
+  back_right.move_voltage(0);
+}
 
-  void strafe() {
+//////////////////////////
+// STRAFE WITH ROTATONS //
+//////////////////////////
 
-  }
+void auto_von_maus::strafe(int distance, int time) {
 
-  //////////////////////
-  // STRAFE WITH TIME //
-  //////////////////////
+}
+void auto_von_maus::strafe(int distance) {
 
-  void strafe_t(int time) {
-    front_left.move_voltage(DRIVE_SPEED);
-    front_right.move_voltage(-DRIVE_SPEED);
-    back_left.move_voltage(-DRIVE_SPEED);
-    back_right.move_voltage(DRIVE_SPEED);
+}
+//////////////////////
+// STRAFE WITH TIME //
+//////////////////////
 
-    pros::delay(time);
-
-    front_left.move_voltage(0);
-    front_right.move_voltage(0);
-    back_left.move_voltage(0);
-    back_right.move_voltage(0);
-  }
-
-  void strafe_t(int power, int time) {
+void auto_von_maus::strafe_t(int power, int time) {
     front_left.move_voltage(power);
     front_right.move_voltage(-power);
     back_left.move_voltage(-power);
@@ -110,135 +84,147 @@ public:
     back_right.move_voltage(0);
   }
 
-  /////////////////////////
-  // ROTATE WITH DEGREES //
-  /////////////////////////
+void auto_von_maus::strafe_t(int time) {
+  front_left.move_voltage(DRIVE_SPEED);
+  front_right.move_voltage(-DRIVE_SPEED);
+  back_left.move_voltage(-DRIVE_SPEED);
+  back_right.move_voltage(DRIVE_SPEED);
 
-  void rotate(int degrees) {
+  pros::delay(time);
 
-  }
+  front_left.move_voltage(0);
+  front_right.move_voltage(0);
+  back_left.move_voltage(0);
+  back_right.move_voltage(0);
+}
 
-  ///////////////////////
-  // ROTATE WITH TIME //
-  //////////////////////s
+/////////////////////////
+// ROTATE WITH DEGREES //
+/////////////////////////
 
-  void rotate_t(int time) {
-    front_left.move_voltage(ROTATE_SPEED);
-    front_right.move_voltage(-ROTATE_SPEED);
-    back_left.move_voltage(ROTATE_SPEED);
-    back_right.move_voltage(-ROTATE_SPEED);
+void rotate(int degrees) {
 
-    pros::delay(time);
+}
 
-    front_left.move_voltage(0);
-    front_right.move_voltage(0);
-    back_left.move_voltage(0);
-    back_right.move_voltage(0);
+///////////////////////
+// ROTATE WITH TIME //
+//////////////////////s
+void auto_von_maus::rotate_t(int power, int time) {
+  front_left.move_voltage(power);
+  front_right.move_voltage(-power);
+  back_left.move_voltage(power);
+  back_right.move_voltage(-power);
 
-  }
+  pros::delay(time);
 
-  void rotate_t(int power, int time) {
-    front_left.move_voltage(power);
-    front_right.move_voltage(-power);
-    back_left.move_voltage(power);
-    back_right.move_voltage(-power);
+  front_left.move_voltage(0);
+  front_right.move_voltage(0);
+  back_left.move_voltage(0);
+  back_right.move_voltage(0);
 
-    pros::delay(time);
+}
 
-    front_left.move_voltage(0);
-    front_right.move_voltage(0);
-    back_left.move_voltage(0);
-    back_right.move_voltage(0);
+void auto_von_maus::rotate_t(int time) {
+  front_left.move_voltage(ROTATE_SPEED);
+  front_right.move_voltage(-ROTATE_SPEED);
+  back_left.move_voltage(ROTATE_SPEED);
+  back_right.move_voltage(-ROTATE_SPEED);
 
-  }
+  pros::delay(time);
 
-  ////////////
-  // INTAKE //
-  ////////////
+  front_left.move_voltage(0);
+  front_right.move_voltage(0);
+  back_left.move_voltage(0);
+  back_right.move_voltage(0);
 
-  void intake() {
-    left_intake.move_voltage(INTAKE_SPEED);
-    right_intake.move_voltage(INTAKE_SPEED);
-  }
+}
 
-  void intake(int voltage_power) {
-    left_intake.move_voltage(voltage_power);
-    right_intake.move_voltage(voltage_power);
-  }
+////////////
+// INTAKE //
+////////////
 
-  /////////////
-  // OUTTAKE //
-  /////////////
+void auto_von_maus::intake() {
+  left_intake.move_voltage(INTAKE_SPEED);
+  right_intake.move_voltage(INTAKE_SPEED);
+}
 
-  void outtake() {
-    left_intake.move_voltage(-INTAKE_SPEED);
-    right_intake.move_voltage(-INTAKE_SPEED);
-  }
+void auto_von_maus::intake(int voltage_power) {
+  left_intake.move_voltage(voltage_power);
+  right_intake.move_voltage(voltage_power);
+}
 
-  void outtake(int voltage_power) {
-    left_intake.move_voltage(-voltage_power);
-    right_intake.move_voltage(-voltage_power);
-  }
-  ////////////////
-  // RAISE ARMS //
-  ////////////////
+/////////////
+// OUTTAKE //
+/////////////
 
-  void raise_arms() {
-    arm.move_voltage(ARM_SPEED);
-  }
+void auto_von_maus::outtake() {
+  left_intake.move_voltage(-INTAKE_SPEED);
+  right_intake.move_voltage(-INTAKE_SPEED);
+}
 
-  void raise_arms(int voltage_power) {
-    arm.move_voltage(voltage_power);
-  }
+void auto_von_maus::outtake(int voltage_power) {
+  left_intake.move_voltage(-voltage_power);
+  right_intake.move_voltage(-voltage_power);
+}
+////////////////
+// RAISE ARMS //
+////////////////
 
-  ////////////////
-  // LOWER ARMS //
-  ////////////////
+void auto_von_maus::raise_arms() {
+  arm.move_voltage(ARM_SPEED);
+}
 
-  void lower_arms() {
-    arm.move_voltage(-ARM_SPEED);
-  }
+void auto_von_maus::raise_arms(int voltage_power) {
+  arm.move_voltage(voltage_power);
+}
 
-  void lower_arms(int voltage_power) {
-    arm.move_voltage(-voltage_power);
-  }
+////////////////
+// LOWER ARMS //
+////////////////
 
-  ///////////////
-  // HOLD ARMS //
-  ///////////////
+void auto_von_maus::lower_arms() {
+  arm.move_voltage(-ARM_SPEED);
+}
 
-  void hold_arms() {
-    arm.move_voltage(0);
-  }
+void auto_von_maus::lower_arms(int voltage_power) {
+  arm.move_voltage(-voltage_power);
+}
 
-  ////////////////
-  // RAISE LIFT //
-  ////////////////
+///////////////
+// HOLD ARMS //
+///////////////
 
-  void raise_lift() {
-    lift.move_voltage(LIFT_SPEED);
-  }
-  void raise_lift(int voltage_power) {
-    lift.move_voltage(voltage_power);
-  }
+void auto_von_maus::auto_von_maus::hold_arms() {
+  arm.move_voltage(0);
+}
 
-  ////////////////
-  // LOWER LIFT //
-  ////////////////
+////////////////
+// RAISE LIFT //
+////////////////
 
-  void lower_lift() {
-    lift.move_voltage(-LIFT_SPEED);
-  }
-  void lower_lift(int voltage_power) {
-    lift.move_voltage(-voltage_power);
-  }
+void auto_von_maus::auto_von_maus::raise_lift() {
+  lift.move_voltage(LIFT_SPEED);
+}
 
-  ///////////////
-  // HOLD LIFT //
-  ///////////////
+void auto_von_maus::raise_lift(int voltage_power) {
+  lift.move_voltage(voltage_power);
+}
 
-  void hold_lift() {
-    lift.move_voltage(0);
-  }
+////////////////
+// LOWER LIFT //
+////////////////
 
-};
+void auto_von_maus::auto_von_maus::lower_lift() {
+  lift.move_voltage(-LIFT_SPEED);
+}
+void auto_von_maus::lower_lift(int voltage_power) {
+  lift.move_voltage(-voltage_power);
+}
+
+///////////////
+// HOLD LIFT //
+///////////////
+
+void auto_von_maus::hold_lift() {
+  lift.move_voltage(0);
+}

@@ -1,4 +1,21 @@
+#include "main.h"
+#include "send_includes/smart_ports.h"
+
 class auto_von_maus {
+
+private:
+  pros::Motor front_left {FRONT_LEFT};
+  pros::Motor front_right {FRONT_RIGHT};
+  pros::Motor back_left {BACK_LEFT};
+  pros::Motor back_right {BACK_RIGHT};
+
+  pros::Motor left_intake {LEFT_INTAKE};
+  pros::Motor right_intake {RIGHT_INTAKE};
+
+  pros::Motor arm {ARM};
+  pros::Motor lift {LIFT_MOTOR};
+
+
 public:
   auto_von_maus();
 

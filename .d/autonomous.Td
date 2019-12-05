@@ -1,5 +1,4 @@
-bin/auto_von_maus.cpp.o: src/auto_von_maus.cpp \
- include/send_includes/auto_von_maus.h include/main.h include/api.h \
+bin/autonomous.cpp.o: src/autonomous.cpp include/main.h include/api.h \
  include/pros/adi.h include/pros/colors.h include/pros/llemu.h \
  include/display/lvgl.h include/display/lv_version.h \
  include/display/lv_misc/lv_log.h include/display/lv_conf.h \
@@ -67,9 +66,9 @@ bin/auto_von_maus.cpp.o: src/auto_von_maus.cpp \
  include/pros/llemu.hpp include/pros/llemu.h include/pros/misc.hpp \
  include/pros/misc.h include/pros/motors.hpp include/pros/motors.h \
  include/pros/rtos.hpp include/pros/rtos.h include/pros/vision.hpp \
- include/pros/vision.h include/send_includes/smart_ports.h
-
-include/send_includes/auto_von_maus.h:
+ include/pros/vision.h include/send_includes/base_functions.h \
+ include/send_includes/smart_ports.h \
+ include/send_includes/auto_von_maus.h
 
 include/main.h:
 
@@ -323,4 +322,8 @@ include/pros/vision.hpp:
 
 include/pros/vision.h:
 
+include/send_includes/base_functions.h:
+
 include/send_includes/smart_ports.h:
+
+include/send_includes/auto_von_maus.h:

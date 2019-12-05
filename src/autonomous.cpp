@@ -3,72 +3,70 @@
 #include "send_includes/smart_ports.h"
 #include "send_includes/auto_von_maus.h"
 
-void auto_von_mp1_debug();
-
-void profile_1();
+void auto_von_maus_debug();
 
 void autonomous() {
-  auto_von_mp1_debug();
+  auto_von_maus_debug();
 }
 
-void auto_von_mp1_debug() {
-  auto_von_maus p1 = auto_von_maus();
+void auto_von_maus_debug() {
+  auto_von_maus av = auto_von_maus();
 
-  p1.drive_t(250);
-  p1.drive_t(-10000, 250);
+  av.drive_t(250);
+  av.drive_t(-10000, 250);
 
-  p1.strafe_t(250);
-  p1.strafe_t(-10000,250);
+  av.strafe_t(250);
+  av.strafe_t(-10000,250);
 
-  p1.rotate_t(250);
-  p1.rotate_t(-10000,250);
+  av.rotate_t(250);
+  av.rotate_t(-10000,250);
 
-  p1.intake();
+  av.intake();
   pros::delay(250);
 
-  p1.intake(-10000);
+  av.intake(-10000);
   pros::delay(250);
 
-  p1.outtake();
+  av.outtake();
   pros::delay(250);
 
-  p1.outtake(-10000);
+  av.outtake(-10000);
   pros::delay(250);
 
-  p1.raise_arms();
+  av.raise_arms();
   pros::delay(250);
 
-  p1.raise_arms(-10000);
+  av.raise_arms(-10000);
   pros::delay(250);
 
-  p1.lower_arms();
+  av.lower_arms();
   pros::delay(250);
 
-  p1.lower_arms(-10000);
+  av.lower_arms(-10000);
   pros::delay(250);
 
-  p1.hold_arms();
+  av.hold_arms();
   pros::delay(250);
 
-  p1.raise_lift();
+  av.raise_lift();
   pros::delay(250);
 
-  p1.raise_lift(-10000);
+  av.raise_lift(-10000);
   pros::delay(250);
 
-  p1.lower_lift();
+  av.lower_lift();
   pros::delay(250);
 
-  p1.lower_lift(-10000);
+  av.lower_lift(-10000);
   pros::delay(250);
 
-  p1.hold_lift();
+  av.hold_lift();
   pros::delay(250);
 
 
 }
 
-void profile_1() {
+void av_1() {
   pros::Motor front_left (FRONT_LEFT);
   pros::Motor front_right (FRONT_RIGHT);
   pros::Motor back_left (BACK_LEFT);
